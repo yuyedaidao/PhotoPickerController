@@ -15,10 +15,10 @@
 		FE671BEF1EEF7CC800AE3688 /* PhotoPickerControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE671BEE1EEF7CC800AE3688 /* PhotoPickerControllerTests.swift */; };
 		FE671BFA1EEF7CC800AE3688 /* PhotoPickerControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE671BF91EEF7CC800AE3688 /* PhotoPickerControllerUITests.swift */; };
 		FE671C0A1EEF7D3C00AE3688 /* PhotoGridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE671C081EEF7D3C00AE3688 /* PhotoGridController.swift */; };
-		FE671C0B1EEF7D3C00AE3688 /* PhotoLibaraysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE671C091EEF7D3C00AE3688 /* PhotoLibaraysController.swift */; };
 		FE671C0D1EEF7E2600AE3688 /* ImageSelectedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE671C0C1EEF7E2600AE3688 /* ImageSelectedLabel.swift */; };
 		FE671C101EEF7E3300AE3688 /* PhotoGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE671C0E1EEF7E3300AE3688 /* PhotoGridCell.swift */; };
 		FE671C111EEF7E3300AE3688 /* PhotoLibarayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE671C0F1EEF7E3300AE3688 /* PhotoLibarayCell.swift */; };
+		FE9AAF391EEFE36B00453579 /* PhotoPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AAF381EEFE36B00453579 /* PhotoPickerController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,10 +53,10 @@
 		FE671BF91EEF7CC800AE3688 /* PhotoPickerControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerControllerUITests.swift; sourceTree = "<group>"; };
 		FE671BFB1EEF7CC800AE3688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE671C081EEF7D3C00AE3688 /* PhotoGridController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGridController.swift; sourceTree = "<group>"; };
-		FE671C091EEF7D3C00AE3688 /* PhotoLibaraysController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibaraysController.swift; sourceTree = "<group>"; };
 		FE671C0C1EEF7E2600AE3688 /* ImageSelectedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSelectedLabel.swift; sourceTree = "<group>"; };
 		FE671C0E1EEF7E3300AE3688 /* PhotoGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGridCell.swift; sourceTree = "<group>"; };
 		FE671C0F1EEF7E3300AE3688 /* PhotoLibarayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibarayCell.swift; sourceTree = "<group>"; };
+		FE9AAF381EEFE36B00453579 /* PhotoPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +143,7 @@
 				FE671C0F1EEF7E3300AE3688 /* PhotoLibarayCell.swift */,
 				FE671C0C1EEF7E2600AE3688 /* ImageSelectedLabel.swift */,
 				FE671C081EEF7D3C00AE3688 /* PhotoGridController.swift */,
-				FE671C091EEF7D3C00AE3688 /* PhotoLibaraysController.swift */,
+				FE9AAF381EEFE36B00453579 /* PhotoPickerController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -284,12 +284,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE671BDC1EEF7CC700AE3688 /* ViewController.swift in Sources */,
-				FE671C0B1EEF7D3C00AE3688 /* PhotoLibaraysController.swift in Sources */,
 				FE671C111EEF7E3300AE3688 /* PhotoLibarayCell.swift in Sources */,
 				FE671C0D1EEF7E2600AE3688 /* ImageSelectedLabel.swift in Sources */,
 				FE671BDA1EEF7CC700AE3688 /* AppDelegate.swift in Sources */,
 				FE671C101EEF7E3300AE3688 /* PhotoGridCell.swift in Sources */,
 				FE671C0A1EEF7D3C00AE3688 /* PhotoGridController.swift in Sources */,
+				FE9AAF391EEFE36B00453579 /* PhotoPickerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

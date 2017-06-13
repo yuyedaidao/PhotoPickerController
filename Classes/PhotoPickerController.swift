@@ -1,5 +1,5 @@
 //
-//  PhotoLibaraysController.swift
+//  PhotoPickerController.swift
 //  Photos
 //
 //  Created by 张晓鑫 on 2017/6/1.
@@ -20,7 +20,7 @@ class PDImageItem {
     
 }
 
-class PhotoLibaraysController: UIViewController {
+class PhotoPickerController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     /// 完成回调
@@ -73,7 +73,7 @@ class PhotoLibaraysController: UIViewController {
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = 55
-        let rightBarItem = UIBarButtonItem(title: "取消", style:UIBarButtonItemStyle.plain, target: self, action:#selector(PhotoLibaraysController.cancel) )
+        let rightBarItem = UIBarButtonItem(title: "取消", style:UIBarButtonItemStyle.plain, target: self, action:#selector(PhotoPickerController.cancel) )
         navigationItem.rightBarButtonItem = rightBarItem
     }
     
@@ -130,7 +130,7 @@ class PhotoLibaraysController: UIViewController {
 }
 
 //MARK: - PHPhotoLibraryChangeObserver
-extension PhotoLibaraysController: PHPhotoLibraryChangeObserver {
+extension PhotoPickerController: PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         DispatchQueue.global().async {
             var updateSectionFetchResults = self.items
@@ -153,7 +153,7 @@ extension PhotoLibaraysController: PHPhotoLibraryChangeObserver {
 }
 
 //MARK: - UITableViewDelegate && UItableVIewDataSource
-extension PhotoLibaraysController:UITableViewDelegate, UITableViewDataSource {
+extension PhotoPickerController:UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items.count
     }
