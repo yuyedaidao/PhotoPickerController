@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-class PDImageItem {
+ class PDImageItem {
     var fetchResult:PHFetchResult<PHAsset>
     var title:String?
     
@@ -20,7 +20,7 @@ class PDImageItem {
     
 }
 
-class PhotoPickerController: UIViewController {
+public class PhotoPickerController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     /// 完成回调
@@ -32,7 +32,7 @@ class PhotoPickerController: UIViewController {
     /// 最大选择数
     public var maxSelected = 9
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         /// 相册的筛选方法
         let smartOptions = PHFetchOptions()
@@ -67,7 +67,7 @@ class PhotoPickerController: UIViewController {
     }
     
     var isFirstload = false
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         title = "照片库"
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -81,12 +81,12 @@ class PhotoPickerController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if isFirstload {
             return
@@ -106,7 +106,7 @@ class PhotoPickerController: UIViewController {
     
     // MARK: - Navigation
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if segue.identifier == "ShowAllPhotos" {
             guard let photoGridController = segue.destination as? PhotoGridController, let cell = sender as? PhotoLibarayCell else {
@@ -131,7 +131,7 @@ class PhotoPickerController: UIViewController {
 
 //MARK: - PHPhotoLibraryChangeObserver
 extension PhotoPickerController: PHPhotoLibraryChangeObserver {
-    func photoLibraryDidChange(_ changeInstance: PHChange) {
+    public func photoLibraryDidChange(_ changeInstance: PHChange) {
         DispatchQueue.global().async {
             var updateSectionFetchResults = self.items
             var reloadRequired = false
@@ -154,17 +154,17 @@ extension PhotoPickerController: PHPhotoLibraryChangeObserver {
 
 //MARK: - UITableViewDelegate && UItableVIewDataSource
 extension PhotoPickerController:UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items.count
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView .dequeueReusableCell(withIdentifier: "PhotoLibaray", for: indexPath) as! PhotoLibarayCell
         let item = self.items[indexPath.row]
         cell.titleLabel.text = "\(item.title ?? " ")"
         cell.countLabel.text = "（\(item.fetchResult.count)）"
         return cell
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let photoGridVC = self.storyboard?.instantiateViewController(withIdentifier: "PhotoGridController") as? PhotoGridController {
             photoGridVC.assetsFetchResults = self.items[indexPath.row].fetchResult
             photoGridVC.completeHandler = completeHandler
