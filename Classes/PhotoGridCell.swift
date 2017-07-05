@@ -10,8 +10,11 @@ import UIKit
 
 class PhotoGridCell: UICollectionViewCell {
     
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var selectedImageView: UIImageView!
+//    @IBOutlet weak var imageView: UIImageView!
+//    @IBOutlet weak var selectedImageView: UIImageView!
+    
+    var imageView: UIImageView! = UIImageView()
+    var selectedImageView: UIImageView! = UIImageView()
     
     open override var isSelected: Bool {
         didSet{
@@ -21,6 +24,22 @@ class PhotoGridCell: UICollectionViewCell {
                 selectedImageView.image = UIImage(named:"CellGreySelected")
             }
         }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        imageView.frame = self.bounds
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        self.addSubview(imageView)
+        
+        selectedImageView.frame = CGRect(x: self.bounds.width - 35, y: 0, width: 30, height: 30)
+        selectedImageView.image = UIImage.init(named: "CellGreySelected")
+        self.addSubview(selectedImageView)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func showAnim() {

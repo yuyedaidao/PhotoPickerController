@@ -41,5 +41,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>精彩的起源</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>留住精彩</string>
 </dict>
 </plist>

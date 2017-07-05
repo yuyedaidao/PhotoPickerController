@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE5756781EF120CE00203B67 /* ImagePicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE5756771EF120CE00203B67 /* ImagePicker.storyboard */; };
 		FE671BDA1EEF7CC700AE3688 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE671BD91EEF7CC700AE3688 /* AppDelegate.swift */; };
 		FE671BDC1EEF7CC700AE3688 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE671BDB1EEF7CC700AE3688 /* ViewController.swift */; };
 		FE671BDF1EEF7CC700AE3688 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE671BDD1EEF7CC700AE3688 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE5756771EF120CE00203B67 /* ImagePicker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ImagePicker.storyboard; sourceTree = "<group>"; };
 		FE671BD61EEF7CC700AE3688 /* PhotoPickerController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoPickerController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE671BD91EEF7CC700AE3688 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE671BDB1EEF7CC700AE3688 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			children = (
 				FE671BD91EEF7CC700AE3688 /* AppDelegate.swift */,
 				FE671BDB1EEF7CC700AE3688 /* ViewController.swift */,
+				FE5756771EF120CE00203B67 /* ImagePicker.storyboard */,
 				FE671BDD1EEF7CC700AE3688 /* Main.storyboard */,
 				FE671BE01EEF7CC700AE3688 /* Assets.xcassets */,
 				FE671BE21EEF7CC700AE3688 /* LaunchScreen.storyboard */,
@@ -258,6 +261,7 @@
 			files = (
 				FE671BE41EEF7CC700AE3688 /* LaunchScreen.storyboard in Resources */,
 				FE671BE11EEF7CC700AE3688 /* Assets.xcassets in Resources */,
+				FE5756781EF120CE00203B67 /* ImagePicker.storyboard in Resources */,
 				FE671BDF1EEF7CC700AE3688 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
