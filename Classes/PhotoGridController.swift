@@ -45,7 +45,7 @@ class PhotoGridController: UIViewController {
         let collectionLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionLayout.minimumLineSpacing = 1
         collectionLayout.minimumInteritemSpacing = 1
-        collectionLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        collectionLayout.sectionInset = UIEdgeInsets.zero
         collectionLayout.itemSize = CGSize(width:screenWidth/4.0-1, height:screenWidth/4.0-1)
         collectionView = UICollectionView(frame:view.bounds, collectionViewLayout: collectionLayout)
         collectionView.register(PhotoGridCell.self, forCellWithReuseIdentifier: "PhotoGridCollectionCell")
@@ -212,7 +212,13 @@ extension PhotoGridController:UICollectionViewDelegate, UICollectionViewDataSour
         let asset = self.assetsFetchResults[indexPath.row]
         imageMannger.requestImage(for: asset, targetSize: assetGridThumbnailSize, contentMode: PHImageContentMode.aspectFill, options: nil) { (image, info) in
             cell.imageView.image = image
-            cell.duration = asset.duration
+            switch asset.mediaType {
+            case .video:
+                cell.duration = asset.duration
+            default:
+                break
+            }
+            
         }
         return cell
     }

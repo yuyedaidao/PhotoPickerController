@@ -78,7 +78,7 @@ public class PhotoPickerController: UIViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         title = "照片库"
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.separatorInset = UIEdgeInsets.zero
         tableView.tableFooterView = UIView()
         tableView.rowHeight = 55
         let rightBarItem = UIBarButtonItem(title: "取消", style:UIBarButtonItemStyle.plain, target: self, action:#selector(PhotoPickerController.cancel) )
@@ -169,7 +169,6 @@ extension PhotoPickerController: PHPhotoLibraryChangeObserver {
 //MARK: - UITableViewDelegate && UItableVIewDataSource
 extension PhotoPickerController:UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(self.items)
         return self.items.count
     }
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
