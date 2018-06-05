@@ -85,7 +85,7 @@ public class PhotoPickerController: UIViewController {
         navigationItem.rightBarButtonItem = rightBarItem
     }
     
-    func cancel() {
+    @objc func cancel() {
         self.dismiss(animated: true, completion: nil)
     }
 

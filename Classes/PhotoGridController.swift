@@ -126,7 +126,7 @@ class PhotoGridController: UIViewController {
     /**
      取消
     */
-    func cancel() {
+    @objc func cancel() {
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
@@ -153,7 +153,7 @@ extension PhotoGridController {
     /**
      点击完成调出图片资源
     */
-    func finishSelected() {
+    @objc func finishSelected() {
         var assets:[PHAsset] = []
         //        let manager = PHImageManager.default()
         let option = PHImageRequestOptions()
