@@ -34,8 +34,20 @@ public class PhotoPickerController: UIViewController {
     public var maxSelected = 9
     public var shouldDeleteAfterExport: Bool = false
     
-    init() {
+    public init() {
         super.init(nibName: nil, bundle: nil)
+        commonInit()
+    }
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        commonInit()
+    }
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+
+    func commonInit() {
         tableView.delegate = self
         tableView.dataSource = self
         self.view.addSubview(tableView)
@@ -43,20 +55,16 @@ public class PhotoPickerController: UIViewController {
         let smartOptions = PHFetchOptions()
         let smartAlumbs = PHAssetCollection.fetchAssetCollections(with: PHAssetCollectionType.smartAlbum, subtype: PHAssetCollectionSubtype.any, options: smartOptions)
         self.convertCollection(smartAlumbs as! PHFetchResult<AnyObject>)
-        
+
         let topLevelUserCollections = PHCollectionList.fetchTopLevelUserCollections(with: nil)
         self.convertCollection(topLevelUserCollections as! PHFetchResult<AnyObject>)
-        
+
         self.items.sort { (item1, item2) -> Bool in
             return item1.fetchResult.count > item2.fetchResult.count
         }
         PHPhotoLibrary.shared().register(self)
     }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     deinit{
         PHPhotoLibrary.shared().unregisterChangeObserver(self)
     }
