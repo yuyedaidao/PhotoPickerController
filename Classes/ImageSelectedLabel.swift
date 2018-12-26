@@ -40,7 +40,7 @@ class ImageSelectedLabel: UILabel {
     func animateChangeSelectedNumber() {
         self.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: UIViewAnimationOptions(), animations: { 
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: UIView.AnimationOptions(), animations: { 
             self.transform = CGAffineTransform.identity
         }, completion: nil)
     
@@ -50,7 +50,7 @@ class ImageSelectedLabel: UILabel {
      超出最大选择时的动画
     */
     func animateMaxSelected() {
-        UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: UIViewKeyframeAnimationOptions(), animations: {
+        UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: UIView.KeyframeAnimationOptions(), animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1, animations: { 
                 self.backgroundColor = UIColor.red
                 self.transform = CGAffineTransform(translationX: -3, y: 0)

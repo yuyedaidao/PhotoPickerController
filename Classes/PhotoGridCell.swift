@@ -64,7 +64,7 @@ class PhotoGridCell: UICollectionViewCell {
     }
     
     func showAnim() {
-        UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: UIViewKeyframeAnimationOptions.allowUserInteraction, animations: { 
+        UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: UIView.KeyframeAnimationOptions.allowUserInteraction, animations: { 
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2, animations: { 
                 self.selectedImageView.transform = CGAffineTransform(scaleX: 0.7, y:0.7)
             })

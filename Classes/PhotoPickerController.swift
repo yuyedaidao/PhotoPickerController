@@ -89,7 +89,7 @@ public class PhotoPickerController: UIViewController {
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.tableFooterView = UIView()
         tableView.rowHeight = 55
-        let rightBarItem = UIBarButtonItem(title: "取消", style:UIBarButtonItemStyle.plain, target: self, action:#selector(PhotoPickerController.cancel) )
+        let rightBarItem = UIBarButtonItem(title: "取消", style:UIBarButtonItem.Style.plain, target: self, action:#selector(PhotoPickerController.cancel) )
         navigationItem.rightBarButtonItem = rightBarItem
     }
     

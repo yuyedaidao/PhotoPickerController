@@ -217,6 +217,7 @@
 					FE671BD51EEF7CC700AE3688 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = GP4MMMES25;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					FE671BE91EEF7CC800AE3688 = {
@@ -449,7 +450,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pandaxin.PhotoPickerController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -463,7 +464,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pandaxin.PhotoPickerController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

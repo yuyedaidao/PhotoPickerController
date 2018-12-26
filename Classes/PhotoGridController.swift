@@ -56,8 +56,8 @@ class PhotoGridController: UIViewController {
         collectionView.dataSource = self
         
         self.view.addSubview(collectionView)
-        completeItem = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.plain, target: self, action: #selector(finishSelected))
-        let flexibleItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        completeItem = UIBarButtonItem(title: "完成", style: UIBarButtonItem.Style.plain, target: self, action: #selector(finishSelected))
+        let flexibleItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         self.toolbarItems = [flexibleItem, completeItem]
         
         if assetsFetchResults == nil {
@@ -71,7 +71,7 @@ class PhotoGridController: UIViewController {
         imageMannger = PHCachingImageManager()
         self.resetCachedAssets()
         
-        let rightBarItem = UIBarButtonItem(title: "取消", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancel))
+        let rightBarItem = UIBarButtonItem(title: "取消", style: UIBarButtonItem.Style.plain, target: self, action: #selector(cancel))
         navigationItem.rightBarButtonItem = rightBarItem
         completeItem.action = #selector(finishSelected)
         disableItems()
