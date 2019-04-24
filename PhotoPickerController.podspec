@@ -90,6 +90,9 @@ Pod::Spec.new do |s|
   #
 
   s.source_files  = "Classes/*.swift"
+  s.resource_bundles = {
+    'PhotoPickerController' => ['PhotoPickerController/*.xcassets']
+  }
   #s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"

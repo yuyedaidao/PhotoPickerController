@@ -12,16 +12,15 @@ class PhotoGridCell: UICollectionViewCell {
     
 //    @IBOutlet weak var imageView: UIImageView!
 //    @IBOutlet weak var selectedImageView: UIImageView!
-    
     var imageView: UIImageView! = UIImageView()
     var selectedImageView: UIImageView! = UIImageView()
     var assistantLabel: UILabel = UILabel()
     open override var isSelected: Bool {
         didSet{
             if isSelected {
-                selectedImageView.image = UIImage(named:"CellBlueSelected")
+                selectedImageView.image = UIImage.named("CellBlueSelected")
             } else {
-                selectedImageView.image = UIImage(named:"CellGreySelected")
+                selectedImageView.image = UIImage.named("CellGreySelected")
             }
         }
     }
