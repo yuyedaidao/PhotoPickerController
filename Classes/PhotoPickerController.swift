@@ -20,7 +20,7 @@ import Photos
     
 }
 
-public class PhotoPickerController: UIViewController {
+open class PhotoPickerController: UIViewController {
 
 //    @IBOutlet weak var tableView: UITableView!
     var tableView: UITableView = UITableView.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
@@ -83,7 +83,7 @@ public class PhotoPickerController: UIViewController {
     }
     
     var isFirstload = false
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         title = "照片库"
         tableView.separatorInset = UIEdgeInsets.zero
@@ -97,12 +97,8 @@ public class PhotoPickerController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
-    override public func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    override public func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if isFirstload {
             return
@@ -126,7 +122,7 @@ public class PhotoPickerController: UIViewController {
     }
     // MARK: - Navigation
 
-    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if segue.identifier == "ShowAllPhotos" {
             guard let photoGridController = segue.destination as? PhotoGridController, let cell = sender as? PhotoLibarayCell else {
