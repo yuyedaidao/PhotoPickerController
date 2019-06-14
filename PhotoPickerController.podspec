@@ -80,7 +80,6 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/yuyedaidao/PhotoPickerController.git", :tag => "#{s.version}" }
 
-
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  CocoaPods is smart about how it includes source code. For source files
@@ -93,7 +92,7 @@ Pod::Spec.new do |s|
   s.resource_bundles = {
     'PhotoPickerController' => ['PhotoPickerController/*.xcassets']
   }
-  s.swift_version = "4.2"
+  s.swift_version = "5.0"
   #s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
