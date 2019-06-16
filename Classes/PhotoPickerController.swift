@@ -33,8 +33,9 @@ open class PhotoPickerController: UIViewController {
     /// 最大选择数
     public var maxSelected = 9
     public var shouldDeleteAfterExport: Bool = false
-    
-    public init() {
+    public private(set) var mediaType: PHAssetMediaType?
+    public init(type: PHAssetMediaType? = nil) {
+        mediaType = type
         super.init(nibName: nil, bundle: nil)
         commonInit()
     }
@@ -53,7 +54,12 @@ open class PhotoPickerController: UIViewController {
         self.view.addSubview(tableView)
         tableView.register(PhotoLibarayCell.self, forCellReuseIdentifier: "PhotoLibarayCell")
         let smartOptions = PHFetchOptions()
-        let smartAlumbs = PHAssetCollection.fetchAssetCollections(with: PHAssetCollectionType.smartAlbum, subtype: PHAssetCollectionSubtype.any, options: smartOptions)
+//        if let type = self.mediaType {
+//            if #available(iOS 9.0, *) {
+//               smartOptions.predicate = NSPredicate(format: "mediaType = %ld", type.rawValue)
+//            }
+//        }
+        let smartAlumbs = PHAssetCollection.fetchAssetCollections(with: PHAssetCollectionType.smartAlbum, subtype: PHAssetCollectionSubtype.albumRegular, options: smartOptions)
         self.convertCollection(smartAlumbs as! PHFetchResult<AnyObject>)
 
         let topLevelUserCollections = PHCollectionList.fetchTopLevelUserCollections(with: nil)
@@ -73,6 +79,9 @@ open class PhotoPickerController: UIViewController {
         for i in 0 ..< collection.count {
             let resultsOptions = PHFetchOptions()
             resultsOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+            if let type = mediaType {
+                resultsOptions.predicate = NSPredicate(format: "mediaType = %ld", type.rawValue)
+            }
             guard let c = collection[i] as? PHAssetCollection else { return
             }
             let assetsFetchResult = PHAsset.fetchAssets(in: c , options: resultsOptions)
@@ -113,6 +122,7 @@ open class PhotoPickerController: UIViewController {
     
     func showGridController(with fetchResult: PHFetchResult<PHAsset>, animated: Bool = true) {
         let photoGridVC = PhotoGridController()
+        photoGridVC.mediaType = mediaType
         photoGridVC.assetsFetchResults = fetchResult
         photoGridVC.completeHandler = completeHandler
         photoGridVC.maxSelected = maxSelected

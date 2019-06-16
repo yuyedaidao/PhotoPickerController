@@ -8,6 +8,7 @@
 
 import UIKit
 import PhotoPickerController
+import Photos
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -17,7 +18,7 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let picker = PhotoPickerController()
+        let picker = PhotoPickerController(type:PHAssetMediaType.video)
         present(UINavigationController(rootViewController: picker), animated: true, completion: nil)
     }
 

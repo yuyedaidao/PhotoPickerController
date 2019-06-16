@@ -32,7 +32,7 @@ class PhotoGridController: UIViewController {
     ///点击完成时的回调
     var completeHandler:((_ assets:[PHAsset]) ->())?
     var shouldDeleteAfterExport: Bool = false
-    
+    var mediaType: PHAssetMediaType?
     lazy var selectedLabel: ImageSelectedLabel = {
         let tempLabel = ImageSelectedLabel(toolBar:self.navigationController!.toolbar)
         return tempLabel
@@ -64,6 +64,9 @@ class PhotoGridController: UIViewController {
             //如果没有传入值 则获取所有资源
             let allPhotoOption = PHFetchOptions()
             allPhotoOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+            if let type = mediaType {
+                allPhotoOption.predicate = NSPredicate(format: "mediaType == %ld", type.rawValue)
+            }
             assetsFetchResults = PHAsset.fetchAssets(with: allPhotoOption)
         }
         
