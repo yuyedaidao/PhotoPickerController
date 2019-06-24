@@ -33,7 +33,7 @@ open class PhotoPickerController: UIViewController {
     /// 最大选择数
     public var maxSelected = 9
     public var shouldDeleteAfterExport: Bool = false
-    public private(set) var mediaType: PHAssetMediaType?
+    public var mediaType: PHAssetMediaType?
     public init(type: PHAssetMediaType? = nil) {
         mediaType = type
         super.init(nibName: nil, bundle: nil)
