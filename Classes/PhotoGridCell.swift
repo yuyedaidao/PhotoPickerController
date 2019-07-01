@@ -18,9 +18,9 @@ class PhotoGridCell: UICollectionViewCell {
     open override var isSelected: Bool {
         didSet{
             if isSelected {
-                selectedImageView.image = UIImage(named:"CellBlueSelected")
+                selectedImageView.image = UIImage.named("CellBlueSelected")
             } else {
-                selectedImageView.image = UIImage(named:"CellGreySelected")
+                selectedImageView.image = UIImage.named("CellGreySelected")
             }
         }
     }
@@ -41,7 +41,7 @@ class PhotoGridCell: UICollectionViewCell {
         self.addSubview(imageView)
         
         selectedImageView.frame = CGRect(x: self.bounds.width - 35, y: 0, width: 30, height: 30)
-        selectedImageView.image = UIImage.init(named: "CellGreySelected")
+        selectedImageView.image = UIImage.named("CellGreySelected")
         self.addSubview(selectedImageView)
         
         assistantLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)

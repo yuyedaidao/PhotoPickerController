@@ -38,6 +38,10 @@ class PhotoGridController: UIViewController {
         return tempLabel
     }()
     
+    var dataArray = [PhotoModel]()
+    // 已经选择的PHAsset的 localidentify
+    var selecetedIdentify = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,6 +72,14 @@ class PhotoGridController: UIViewController {
                 allPhotoOption.predicate = NSPredicate(format: "mediaType == %ld", type.rawValue)
             }
             assetsFetchResults = PHAsset.fetchAssets(with: allPhotoOption)
+        }
+        for i in 0..<assetsFetchResults.count {
+            let asset = assetsFetchResults[i]
+            let model = PhotoModel(asset: asset)
+            dataArray.append(model)
+        }
+        for model in dataArray {
+            model.selected = selecetedIdentify.contains(model.asset.localIdentifier)
         }
         
         //初始化和重置缓存
@@ -102,6 +114,8 @@ class PhotoGridController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         didLoad = true
+        let selectedCount = self.selectedCount()
+        selectedLabel.selectedNumber = selectedCount
         
     }
     
@@ -207,22 +221,27 @@ extension PhotoGridController {
 // MARK: - UICollectionViewDelegate&&UICollectionViewDataSource
 extension PhotoGridController:UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.assetsFetchResults.count
+        return self.dataArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoGridCollectionCell", for: indexPath) as! PhotoGridCell
-        let asset = self.assetsFetchResults[indexPath.row]
-        imageMannger.requestImage(for: asset, targetSize: assetGridThumbnailSize, contentMode: PHImageContentMode.aspectFill, options: nil) { (image, info) in
+        let model = self.dataArray[indexPath.row]
+        imageMannger.requestImage(for: model.asset, targetSize: assetGridThumbnailSize, contentMode: PHImageContentMode.aspectFill, options: nil) { (image, info) in
             cell.imageView.image = image
-            switch asset.mediaType {
+            switch model.asset.mediaType {
             case .video:
-                cell.duration = asset.duration
+                cell.duration = model.asset.duration
             default:
                 break
             }
             
         }
+        if model.selected {
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
+            cell.selectedImageView.image = UIImage.named("CellBlueSelected")
+        }
+        
         return cell
     }
     

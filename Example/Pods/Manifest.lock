@@ -1,5 +1,5 @@
 PODS:
-  - PhotoPickerController (0.0.6)
+  - PhotoPickerController (0.1.1)
 
 DEPENDENCIES:
   - PhotoPickerController (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  PhotoPickerController: 286eaf8bdcd8523e3f83adff684ff5c00e556a41
+  PhotoPickerController: 4aaf9f23903c328291d5e334606e14959bd609d8
 
 PODFILE CHECKSUM: 6ede42f65f6d43efd4aa9e53f71a3a3bb88486c4
 
-COCOAPODS: 1.7.0.beta.1
+COCOAPODS: 1.7.0

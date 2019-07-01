@@ -24,6 +24,13 @@
 		5539739A2270693300F10FD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5539739C2270693300F10FD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72F2EFE1AA7229D0CE0BA32C /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		940B820222C9E671008A3851 /* PhotoPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerController.swift; sourceTree = "<group>"; };
+		940B820322C9E671008A3851 /* PhotoGridController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridController.swift; sourceTree = "<group>"; };
+		940B820422C9E671008A3851 /* PhotoGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridCell.swift; sourceTree = "<group>"; };
+		940B820522C9E671008A3851 /* PhotoLibarayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibarayCell.swift; sourceTree = "<group>"; };
+		940B820622C9E671008A3851 /* PhotoPickerControllerImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerControllerImage.swift; sourceTree = "<group>"; };
+		940B820722C9E671008A3851 /* ImageSelectedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectedLabel.swift; sourceTree = "<group>"; };
+		940B820822C9E7FC008A3851 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		A91B1E8F160E92EA2AE155B6 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD2D06E0CB3573FC3D1C2303 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,6 +58,7 @@
 		553973842270693200F10FD9 = {
 			isa = PBXGroup;
 			children = (
+				940B820122C9E671008A3851 /* Classes */,
 				5539738F2270693200F10FD9 /* Example */,
 				5539738E2270693200F10FD9 /* Products */,
 				D88B86D72B37CE637F55522D /* Pods */,
@@ -77,6 +85,21 @@
 				5539739C2270693300F10FD9 /* Info.plist */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		940B820122C9E671008A3851 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				940B820222C9E671008A3851 /* PhotoPickerController.swift */,
+				940B820322C9E671008A3851 /* PhotoGridController.swift */,
+				940B820822C9E7FC008A3851 /* PhotoModel.swift */,
+				940B820422C9E671008A3851 /* PhotoGridCell.swift */,
+				940B820522C9E671008A3851 /* PhotoLibarayCell.swift */,
+				940B820622C9E671008A3851 /* PhotoPickerControllerImage.swift */,
+				940B820722C9E671008A3851 /* ImageSelectedLabel.swift */,
+			);
+			name = Classes;
+			path = ../Classes;
 			sourceTree = "<group>";
 		};
 		D88B86D72B37CE637F55522D /* Pods */ = {

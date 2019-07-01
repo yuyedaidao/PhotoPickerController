@@ -34,6 +34,7 @@ open class PhotoPickerController: UIViewController {
     public var maxSelected = 9
     public var shouldDeleteAfterExport: Bool = false
     public var mediaType: PHAssetMediaType?
+    public var selectedIdentify = [String]()
     public init(type: PHAssetMediaType? = nil) {
         mediaType = type
         super.init(nibName: nil, bundle: nil)
@@ -127,6 +128,7 @@ open class PhotoPickerController: UIViewController {
         photoGridVC.completeHandler = completeHandler
         photoGridVC.maxSelected = maxSelected
         photoGridVC.shouldDeleteAfterExport = shouldDeleteAfterExport
+        photoGridVC.selecetedIdentify = selectedIdentify
         self.navigationController?.pushViewController(photoGridVC, animated: animated)
         
     }
@@ -151,6 +153,7 @@ open class PhotoPickerController: UIViewController {
                 return
             }
             photoGridController.assetsFetchResults = fetchResult
+            photoGridController.selecetedIdentify = selectedIdentify
            
         }
     }

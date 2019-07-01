@@ -1,6 +1,6 @@
 {
   "name": "PhotoPickerController",
-  "version": "0.0.6",
+  "version": "0.1.1",
   "summary": "A Swift ImagePicker",
   "description": "Swift版图片选择器，参考ZZImagePicker",
   "homepage": "https://github.com/Pandanx/PhotoPickerController.git",
@@ -13,12 +13,14 @@
   },
   "source": {
     "git": "https://github.com/yuyedaidao/PhotoPickerController.git",
-    "tag": "0.0.6"
+    "tag": "0.1.1"
   },
   "source_files": "Classes/*.swift",
   "resource_bundles": {
     "PhotoPickerController": [
       "PhotoPickerController/*.xcassets"
     ]
-  }
+  },
+  "swift_versions": "5.0",
+  "swift_version": "5.0"
 }
