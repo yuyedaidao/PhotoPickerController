@@ -73,4 +73,8 @@ class PhotoGridCell: UICollectionViewCell {
         }, completion: nil)
     }
     
+    func prepareWith(_ model: PhotoModel) {
+        selectedImageView.image = model.selected ? UIImage.named("CellBlueSelected") : UIImage.named("CellGreySelected")
+    }
+    
 }

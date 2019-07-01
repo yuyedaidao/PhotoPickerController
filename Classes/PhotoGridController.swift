@@ -39,6 +39,7 @@ class PhotoGridController: UIViewController {
     }()
     
     var dataArray = [PhotoModel]()
+    var selectedModle = [PhotoModel]()
     // 已经选择的PHAsset的 localidentify
     var selecetedIdentify = [String]()
     
@@ -80,8 +81,16 @@ class PhotoGridController: UIViewController {
         }
         for model in dataArray {
             model.selected = selecetedIdentify.contains(model.asset.localIdentifier)
+            if model.selected {
+                selectedModle.append(model)
+            }
         }
-        
+        if selectedModle.count == 0 {
+            disableItems()
+        } else {
+            selectedLabel.selectedNumber = selectedModle.count
+            enableItems()
+        }
         //初始化和重置缓存
         imageMannger = PHCachingImageManager()
         self.resetCachedAssets()
@@ -89,7 +98,6 @@ class PhotoGridController: UIViewController {
         let rightBarItem = UIBarButtonItem(title: "取消", style: UIBarButtonItem.Style.plain, target: self, action: #selector(cancel))
         navigationItem.rightBarButtonItem = rightBarItem
         completeItem.action = #selector(finishSelected)
-        disableItems()
     }
     
     
@@ -114,8 +122,7 @@ class PhotoGridController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         didLoad = true
-        let selectedCount = self.selectedCount()
-        selectedLabel.selectedNumber = selectedCount
+    
         
     }
     
@@ -150,9 +157,15 @@ class PhotoGridController: UIViewController {
     /**
      获取已选择个数
     */
-    func selectedCount() -> Int {
-        return self.collectionView.indexPathsForSelectedItems?.count ?? 0
-    }
+//    func selectedCount() -> Int {
+//        var selectedModel = [PhotoModel]()
+//        for model in dataArray {
+//            if model.selected {
+//                selectedModel.append(model)
+//            }
+//        }
+//        return selectedModel.count
+//    }
     
     /*
     // MARK: - Navigation
@@ -177,12 +190,11 @@ extension PhotoGridController {
         option.isSynchronous = true
         option.resizeMode = .fast
         
-        if let indexPaths = collectionView.indexPathsForSelectedItems {
-            indexPaths.forEach({ (indexPath) in
-                assets.append(assetsFetchResults[indexPath.row])
-            })
-            
+       
+        selectedModle.forEach { (model) in
+            assets.append(model.asset)
         }
+        
         self.dismiss(animated: true) {
             self.completeHandler?(assets)
         }
@@ -237,39 +249,68 @@ extension PhotoGridController:UICollectionViewDelegate, UICollectionViewDataSour
             }
             
         }
-        if model.selected {
-            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
-            cell.selectedImageView.image = UIImage.named("CellBlueSelected")
-        }
+        cell.prepareWith(model)
         
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? PhotoGridCell {
-            let selectedCount = self.selectedCount()
-            selectedLabel.selectedNumber = selectedCount
-            if selectedCount == 0 {
-                self.disableItems()
-            }
-            cell.showAnim()
-        }
-    }
+
+//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+//        if let cell = collectionView.cellForItem(at: indexPath) as? PhotoGridCell {
+//
+//            let selectedCount = self.selectedCount()
+//            selectedLabel.selectedNumber = selectedCount
+//            if selectedCount == 0 {
+//                self.disableItems()
+//            }
+//            cell.showAnim()
+//        }
+//    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: false)
         if let cell = collectionView.cellForItem(at: indexPath) as? PhotoGridCell {
-            let selectedCount = self.selectedCount()
-            if selectedCount > self.maxSelected {
-                //选择个数大于选择数 设置为不选中状态
-                collectionView.deselectItem(at: indexPath, animated: false)
-                selectedLabel.animateMaxSelected()
-            } else {
-                selectedLabel.selectedNumber = selectedCount
-                if selectedCount > 0 && !self.completeItem.isEnabled{
+            let model = dataArray[indexPath.row]
+            if selectedModle.count < maxSelected {
+                
+                
+                if !model.selected {
+                    selectedModle.append(model)
+                }
+                if model.selected {
+                    for (index ,item) in selectedModle.enumerated() {
+                        if item.asset == model.asset {
+                            selectedModle.remove(at: index)
+                        }
+                    }
+                }
+                model.selected = !model.selected
+                
+                cell.prepareWith(model)
+                selectedLabel.selectedNumber = selectedModle.count
+                if selectedModle.count > 0 && !completeItem.isEnabled {
                     self.enableItems()
                 }
-                cell.showAnim()
+                if selectedModle.count == 0 {
+                    self.disableItems()
+                }
+               
+                
+            } else {
+                if model.selected {
+                    for (index ,item) in selectedModle.enumerated() {
+                        if item.asset == model.asset {
+                            selectedModle.remove(at: index)
+                        }
+                    }
+                    model.selected = !model.selected
+                    cell.prepareWith(model)
+                    selectedLabel.selectedNumber = selectedModle.count
+                    if selectedModle.count == maxSelected {
+                        selectedLabel.animateMaxSelected()
+                    }
+                }
             }
+            cell.showAnim()
         }
         
     }
