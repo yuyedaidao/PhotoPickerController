@@ -54,27 +54,34 @@ open class PhotoPickerController: UIViewController {
         tableView.dataSource = self
         self.view.addSubview(tableView)
         tableView.register(PhotoLibarayCell.self, forCellReuseIdentifier: "PhotoLibarayCell")
-        let smartOptions = PHFetchOptions()
-//        if let type = self.mediaType {
-//            if #available(iOS 9.0, *) {
-//               smartOptions.predicate = NSPredicate(format: "mediaType = %ld", type.rawValue)
-//            }
-//        }
-        let smartAlumbs = PHAssetCollection.fetchAssetCollections(with: PHAssetCollectionType.smartAlbum, subtype: PHAssetCollectionSubtype.albumRegular, options: smartOptions)
-        self.convertCollection(smartAlumbs as! PHFetchResult<AnyObject>)
-
-        let topLevelUserCollections = PHCollectionList.fetchTopLevelUserCollections(with: nil)
-        self.convertCollection(topLevelUserCollections as! PHFetchResult<AnyObject>)
-
-        self.items.sort { (item1, item2) -> Bool in
-            return item1.fetchResult.count > item2.fetchResult.count
-        }
+        
+        loadImages()
         PHPhotoLibrary.shared().register(self)
     }
-
+    
     deinit{
         PHPhotoLibrary.shared().unregisterChangeObserver(self)
     }
+    
+    func loadImages() {
+        let smartOptions = PHFetchOptions()
+        //        if let type = self.mediaType {
+        //            if #available(iOS 9.0, *) {
+        //               smartOptions.predicate = NSPredicate(format: "mediaType = %ld", type.rawValue)
+        //            }
+        //        }
+        let smartAlumbs = PHAssetCollection.fetchAssetCollections(with: PHAssetCollectionType.smartAlbum, subtype: PHAssetCollectionSubtype.albumRegular, options: smartOptions)
+        self.convertCollection(smartAlumbs as! PHFetchResult<AnyObject>)
+        
+        let topLevelUserCollections = PHCollectionList.fetchTopLevelUserCollections(with: nil)
+        self.convertCollection(topLevelUserCollections as! PHFetchResult<AnyObject>)
+        
+        self.items.sort { (item1, item2) -> Bool in
+            return item1.fetchResult.count > item2.fetchResult.count
+        }
+    }
+    
+    
     
     fileprivate func convertCollection(_ collection:PHFetchResult<AnyObject>) {
         for i in 0 ..< collection.count {
@@ -96,6 +103,9 @@ open class PhotoPickerController: UIViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         title = "照片库"
+        
+        getAppPhotosUsing()
+        
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.tableFooterView = UIView()
         tableView.rowHeight = 55
@@ -107,6 +117,25 @@ open class PhotoPickerController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
+    
+    func getAppPhotosUsing() {
+        if PHPhotoLibrary.authorizationStatus() == .notDetermined {
+            PHPhotoLibrary.requestAuthorization { [weak self] (status) in
+                guard let self = self else { return }
+                switch status {
+                case .authorized:
+                    self.loadImages()
+                  
+                default:
+                    break
+                }
+            }
+        }
+        
+       
+        
+    }
+    
     
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
