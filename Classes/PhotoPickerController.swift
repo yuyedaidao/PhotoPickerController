@@ -70,7 +70,7 @@ open class PhotoPickerController: UIViewController {
         //               smartOptions.predicate = NSPredicate(format: "mediaType = %ld", type.rawValue)
         //            }
         //        }
-        let smartAlumbs = PHAssetCollection.fetchAssetCollections(with: PHAssetCollectionType.smartAlbum, subtype: PHAssetCollectionSubtype.albumRegular, options: smartOptions)
+        let smartAlumbs = PHAssetCollection.fetchAssetCollections(with: PHAssetCollectionType.smartAlbum, subtype: PHAssetCollectionSubtype.any, options: smartOptions)
         self.convertCollection(smartAlumbs as! PHFetchResult<AnyObject>)
         
         let topLevelUserCollections = PHCollectionList.fetchTopLevelUserCollections(with: nil)
